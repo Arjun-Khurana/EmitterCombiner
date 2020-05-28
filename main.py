@@ -1,6 +1,7 @@
 import pandas as pd
 import sys
 import os
+from tqdm import tqdm
 
 dfs = []
 
@@ -30,7 +31,7 @@ def rowAdd(row, file, info):
     row['filename'] = file
     row['wafer'] = info['wafer']
 
-for file in os.listdir(sys.argv[1]):
+for file in tqdm(os.listdir(sys.argv[1])):
     if file.endswith('.csv'):
         filename = os.path.join(sys.argv[1], file)
         info = fileparse(file)
