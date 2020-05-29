@@ -64,9 +64,8 @@ for file in tqdm(os.listdir(args.inputDir)):
         if args.appended:
             for key in dev:
                 df[key] = dev[key]
-        elif args.separated:
-            dev['posX'] = info['posX']
-            dev['posY'] = info['posY']
+        if args.separated:
+            dev.update(info)
             std = std.append(dev, ignore_index=True)
             pass
 
